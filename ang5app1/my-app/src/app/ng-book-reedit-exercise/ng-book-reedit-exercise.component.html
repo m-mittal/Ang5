@@ -1,0 +1,10 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <h2>Add a Link</h2><br>
+  <label>Title : </label><input type="text" name="titleName" ngModel> <br>
+  <label>Link  : </label><input type="text" name="linkName" ngModel><br>
+  <button type="submit">Submit</button>
+
+</form>
+
+
+<app-ng-book-reddit-exercise-link-item [LinkItem]="x" *ngFor="let x of LinkItemList" (onVoteUpEvent)="onVoteUp($event)" (onVoteDownEvent)="onVoteDown($event)"></app-ng-book-reddit-exercise-link-item>

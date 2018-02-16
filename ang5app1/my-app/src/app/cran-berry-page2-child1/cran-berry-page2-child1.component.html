@@ -1,0 +1,13 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div *ngIf="selectedOptions.includes('Name1')">
+  <label>Name</label><input  type="text" name="name1" ngModel>
+  </div>
+  <div *ngIf="selectedOptions.includes('Address1')" ngModel>
+  <label>Address</label><input type="text" name="add1">
+  </div>
+  <div *ngIf="selectedOptions.includes('Mobile1')">
+  <label>Mobile</label><input type="text" name="mob1" ngModel>
+  </div>
+  <button type="submit">save</button>
+
+</form>

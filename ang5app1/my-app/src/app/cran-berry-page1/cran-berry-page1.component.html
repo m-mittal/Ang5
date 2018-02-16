@@ -1,0 +1,47 @@
+<router-outlet></router-outlet>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div>
+    <label>Name</label><input type="text" name="name1" ngModel appNameValidator #name1="ngModel"/>
+    <label *ngIf="name1.errors">name is not valid</label>
+    <label>Email</label><input type="text" name="email1" ngModel appEmailValidator #email1="ngModel"/>
+    <label *ngIf="email1.errors && email1.dirty">email is not valid</label>
+    <label>Mobile</label><input type="text" name="mob1" ngModel>
+    <label>Amount</label><input type="text" name="amt1" ngModel>
+    <label>City</label>
+    <select required>
+      <option value="default" selected disabled hidden>Select Option</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+
+    <button type="submit">Submit</button>
+
+  </div>
+
+  <table>
+    <tr *ngIf="name.length>0">
+      <th>#</th>
+      <th>Field</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let x of name, let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{x}}</td>
+      <td>1</td>
+    </tr>
+  </table>
+
+  <input type="radio" name="one" value="1" id="radOne" (change)="onSelectionChange(1)"> 1<br/>
+  <input type="radio" name="one" value="2" id="radTwo" (change)="onSelectionChange(2)"> 2<br/>
+  <input type="radio" name="one" value="3" id="radThree" (change)="onSelectionChange(3)"> 3
+
+  <div id="form1" style.display = {{RadioOne}}>From Date : <input type="date" name="fromDate" id="fromDate" value="2014-02-09">      To Date : <input type="date" name="toDate" id="toDate" value="2014-02-09"></div>
+  <div id="form2" style.display = {{RadioTwo}}>Gender : <input type="radio" name="gender" value="Male">Male    <input type="radio" name="gender" value="Female">Female</div>
+  <div id="form3" style.display = {{RadioThree}}>Documents : <input type="checkbox" name="doc" value="aadhar">Aadhar<input type="checkbox" name="doc" value="elecBill">Electricity Bill<input type="checkbox" name="doc" value="VoterId">Voter ID</div>
+
+  <input type="button" name="save1" value="Save" [disabled]="!f.valid" (click)="onSave()"><input type="reset" name="reset1" value="Reset">
+</form>
+
+

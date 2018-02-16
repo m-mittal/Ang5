@@ -1,0 +1,32 @@
+<form #f="ngForm">
+<table>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Mobile</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let x of data, let i = index">
+    <td>{{x.id}}</td>
+    <td>{{x.name}}</td>
+    <td>{{x.adddress}}</td>
+    <td>{{x.mobile}}</td>
+    <td>
+      <select name="dropDown" multiple ngModel size="2">
+        <option value="default" name="default" selected disabled hidden>Select Option</option>
+        <option value="Name1" name="nameOpt1" *ngIf="x.name !== ''">Name</option>
+        <option value="Address1" name="addOpt1" *ngIf="x.adddress !== ''">Address</option>
+        <option value="Mobile1" name="mobOpt1" *ngIf="x.mobile !== ''">Mobile</option>
+      </select>
+      <button value="View" name="viewButton{{i}}" (click)="onClick(x, f, data)">View</button>
+    </td>
+  </tr>
+</table>
+
+
+
+
+<button (click)="getData()">Hit me hard :-)</button>
+</form>
+<app-cran-berry-page2-child1 [(selectedOptions)]="selectedOptions" [data]="this?.data" [currentData]="currentData?.id" [hidden]="hideShow"></app-cran-berry-page2-child1>
