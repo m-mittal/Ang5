@@ -1,22 +1,62 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  DoCheck,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy
+} from '@angular/core';
 import {linkItemClass} from "./LinkItem-class";
-import {isNewline} from "codelyzer/angular/styles/cssLexer";
 
 @Component({
   selector: 'app-ng-book-reedit-exercise',
   templateUrl: './ng-book-reedit-exercise.component.html',
   styleUrls: ['./ng-book-reedit-exercise.component.css']
 })
-export class NgBookReeditExerciseComponent implements OnInit {
 
+export class NgBookReeditExerciseComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
   LinkItemList: linkItemClass[]=[];
   newLinkItem:linkItemClass= new linkItemClass;
   lastIndex: number;
   currentIndex: number;
-  constructor() { }
+
+  constructor() {
+    console.log('Parent Class : Constructor');
+  }
 
   ngOnInit() {
+    console.log('Parent Class : OnInit');
+  }
+
+  ngOnChanges() {
+    console.log('Parent Class : OnChanges');
+  }
+
+  ngDoCheck() {
+    console.log('Parent Class : DoCheck');
+  }
+
+  ngAfterContentInit() {
+    console.log('Parent Class : AfterContentInit');
+  }
+
+  ngAfterContentChecked() {
+    console.log('Parent Class : AfterContentChecked');
+  }
+
+  ngAfterViewInit() {
+    console.log('Parent Class : AfterViewInit');
+  }
+
+  ngAfterViewChecked() {
+    console.log('Parent Class : AfterViewChecked');
+  }
+
+  ngOnDestroy() {
+    console.log('Parent Class : OnDestroy');
   }
 
   public getId():any{
@@ -38,16 +78,15 @@ export class NgBookReeditExerciseComponent implements OnInit {
     } );
 
     form.reset();
-
-    console.log('in onSumbit method');
-    console.log(this.LinkItemList);
+//    console.log('in onSumbit method');
+//    console.log(this.LinkItemList);
   }
 
   onVoteUp(id:number):void{
     for(let i of this.LinkItemList){
       if(i.id == id ){
         this.LinkItemList[id].voteCount = this.LinkItemList[id].voteCount + 1;
-        console.log('inside vote up parent');
+        //      console.log('inside vote up parent');
       }
     }
   }
@@ -56,9 +95,8 @@ export class NgBookReeditExerciseComponent implements OnInit {
     for(let i of this.LinkItemList){
       if(i.id == id ){
         this.LinkItemList[id].voteCount = this.LinkItemList[id].voteCount - 1;
-        console.log('inside vote down parent');
+//        console.log('inside vote down parent');
       }
     }
   }
-
 }

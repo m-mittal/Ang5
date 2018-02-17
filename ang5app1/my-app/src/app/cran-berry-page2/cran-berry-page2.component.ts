@@ -12,12 +12,14 @@ import {Http} from "@angular/http";
   styleUrls: ['./cran-berry-page2.component.css']
 })
 export class CranBerryPage2Component implements OnInit {
-  data: tableEntityClass[]=[];
+  data: tableEntityClass[];
   currentData; any;
   selectedOptions = [];
   hideShow: Boolean = true;
 
-  constructor(private getDataService : GetDataService, private http:Http) { }
+  constructor(private getDataService: GetDataService, private http: Http) {
+    this.data = this.getDataService.getData();
+  }
 
   getData(){
     // this.http.get('https://jsonblob.com/api/jsonBlob/aa92685f-0d95-11e8-8cfd-15871d618ee9').subscribe(res => (this.data = res.json()));
@@ -26,7 +28,7 @@ export class CranBerryPage2Component implements OnInit {
 
   ngOnInit() {
     //this.data = this.getDataService.getData();
-    this.getData();
+    // this.getData();
     console.log(this.data);
   }
 
