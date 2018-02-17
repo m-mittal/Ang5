@@ -6,6 +6,8 @@ import {tableEntityClass} from './tableEntity.class';
 import {GetDataService} from "./get-data.service";
 import {Http} from "@angular/http";
 
+
+
 @Component({
   selector: 'app-cran-berry-page2',
   templateUrl: './cran-berry-page2.component.html',
